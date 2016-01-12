@@ -2,16 +2,18 @@ package co.ulock.api.data;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.Lob;
 
 @Entity
-public class Site extends BaseEntity {
+public class Settings extends BaseEntity {
 
+	private String accountId;
+	
 	@Embedded
 	private EncryptData data;
 
-	private String accountId;
+	@Lob
+	private String publicKey;
 
 	public EncryptData getData() {
 		return data;
@@ -21,7 +23,6 @@ public class Site extends BaseEntity {
 		this.data = data;
 	}
 
-	@JsonIgnore
 	public String getAccountId() {
 		return accountId;
 	}
@@ -30,4 +31,12 @@ public class Site extends BaseEntity {
 		this.accountId = accountId;
 	}
 
+	public String getPublicKey() {
+		return publicKey;
+	}
+
+	public void setPublicKey(String publicKey) {
+		this.publicKey = publicKey;
+	}
+	
 }
