@@ -1,6 +1,7 @@
 package co.ulock.api.data;
 
 import javax.persistence.Embeddable;
+import javax.persistence.Lob;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategy.LowerCaseWithUnderscoresStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
@@ -12,6 +13,7 @@ public class EncryptData {
 	// {cipher_text: cipherText, salt: forge.util.encode64(salt), iv:
 	// forge.util.encode64(iv)};
 
+	@Lob
 	private String cipherText;
 	private String salt;
 	private String iv;

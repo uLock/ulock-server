@@ -7,6 +7,8 @@ import javax.persistence.EntityManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,6 +18,7 @@ import co.ulock.api.data.Site;
 
 import static org.torpedoquery.jpa.Torpedo.*;
 
+@CrossOrigin
 @RestController
 public class SiteController {
 
@@ -32,6 +35,14 @@ public class SiteController {
 	@Transactional
 	@RequestMapping(path = "/site", method = RequestMethod.POST)
 	public Site create(@RequestBody Site site, Principal principal) {
+		site.setAccountId(principal.getName());
+		return manager.merge(site);
+	}
+	
+	@Transactional
+	@RequestMapping(path = "/site/{siteId}", method = RequestMethod.PUT)
+	public Site update(@RequestBody Site site,@PathVariable String siteId, Principal principal) {
+		site.setId(siteId);
 		site.setAccountId(principal.getName());
 		return manager.merge(site);
 	}
