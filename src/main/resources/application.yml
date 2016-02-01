@@ -11,6 +11,7 @@ spring:
 spring:
   profiles: staging
   datasource:
+    driverClassName: org.postgresql.Driver
     url: ${JDBC_DATABASE_URL}
     jpa:
       hibernate:
