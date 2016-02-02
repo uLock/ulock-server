@@ -17,3 +17,16 @@ spring:
       hibernate:
         ddl-auto: update
         
+---
+        
+spring:
+  profiles: production
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://ulock-postgres.weave.local/ulock
+    username: postgres
+    password: ${DB_PASSWORD}
+    jpa:
+      hibernate:
+        ddl-auto: update
+        
