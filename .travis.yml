@@ -10,3 +10,8 @@ deploy:
     staging: ulock-staging
   api_key:
     secure: nrQwnwOCaZe7aTrP8mmrOoJ/0EASPk/mjLY0iqnoYSNiVckd4iP72mHLguXLczX1O403sN4LGc2bOc8PRFAHR+YxVutb4MIhpekJG8DXDX1AYxDxnOjsTqpZD90Y8qs0C5tyM4WZGnraTZKfaecJY6h8/wKqWi3vUuvDkcpEeAwnFqrfmwuYNuJV5ClJPq0ICkR/IPlMgNET18OaQyHMx6Eyy/vfqLwmU4C8WNZDBdbK1Ui1th+QrikCws/b39hIZx9v90yJ0zPmBsTnP8ceUarDO7FCYL8C3NUfq72SR8/rzvoWii5W6o0HsY3kYfXrCX/mbOsCB7+T+kDuZ2BWQRuuY+bkKHGRaCPzWPqtkfJJtFmW5wt+lP355wZ2jUjFdUD42Iazn7XjQMnSy4bYK9aKFbv3tO9AM3Oxx2IKq6dRfzIpno+X9dpl5iS+R+Z0bgIU8MbbJ9jUXcb/WpPMRHpIE/Eazyhhp1LCxIofxmx4iupXNnaeNveF2IIR3rKQ+MtE3Jd0swykWlKXRZPAgNFE9Bk9hg4+0Z5CQ+gJa39P/mv8dU/DHa8glKszdMxfXzsieemQYTuVVxKmDbmzTINfEhbfyRF+S2/cKq1s0pZSp3YwzcbOPutIUyYCbItB+E+aWzWIpJyn49N/6vQZcL5qt9frjP4ErvLC7ehdlZQ=
+deploy:
+  provider: script
+  script: scripts/deploy_prod.sh
+  on:
+  	branch: production
