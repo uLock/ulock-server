@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>ulock-server</name>
-	<description>Demo project for Spring Boot</description>
+	<description>uLock API</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -64,7 +64,16 @@
 		</dependency>
 	</dependencies>
 
+
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>src/main/webapp</directory>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
