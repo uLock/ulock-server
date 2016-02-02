@@ -12,9 +12,7 @@ spring:
   profiles: staging
   datasource:
     driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://ulock-postgres.weave.local/ulock_staging
-    username: postgres
-    password: ${DB_PASSWORD}
+    url: ${JDBC_DATABASE_URL}
     jpa:
       hibernate:
         ddl-auto: update
