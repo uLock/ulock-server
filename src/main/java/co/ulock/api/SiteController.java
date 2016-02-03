@@ -3,8 +3,6 @@ package co.ulock.api;
 import java.security.Principal;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -14,29 +12,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import co.ulock.api.dao.SiteRepository;
 import co.ulock.api.data.Site;
-
-import static org.torpedoquery.jpa.Torpedo.*;
 
 @CrossOrigin
 @RestController
 public class SiteController {
 
 	@Autowired
-	private EntityManager manager;
+	private SiteRepository dao;
 
 	@RequestMapping(path = "/site")
 	public List<Site> sites(Principal principal) {
-		Site from = from(Site.class);
-		where(from.getAccountId()).eq(principal.getName());
-		return select(from).list(manager);
+		return dao.findByAccountId(principal.getName());
 	}
 
 	@Transactional
 	@RequestMapping(path = "/site", method = RequestMethod.POST)
 	public Site create(@RequestBody Site site, Principal principal) {
 		site.setAccountId(principal.getName());
-		return manager.merge(site);
+		return dao.save(site);
 	}
 	
 	@Transactional
@@ -44,7 +39,7 @@ public class SiteController {
 	public Site update(@RequestBody Site site,@PathVariable String siteId, Principal principal) {
 		site.setId(siteId);
 		site.setAccountId(principal.getName());
-		return manager.merge(site);
+		return dao.save(site);
 	}
 
 }
