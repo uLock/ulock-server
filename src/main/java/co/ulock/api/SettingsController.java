@@ -22,7 +22,7 @@ public class SettingsController {
 
 	@RequestMapping(path = "/settings", method = RequestMethod.GET)
 	public Settings getUserSettings(Principal principal) {
-		return dao.findByAccountId(principal.getName());
+		return dao.findOneByAccountId(principal.getName());
 	}
 
 	@Transactional

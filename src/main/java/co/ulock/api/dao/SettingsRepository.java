@@ -8,6 +8,6 @@ import co.ulock.api.data.Settings;
 @Transactional
 public interface SettingsRepository extends JpaRepository<Settings, String> {
 
-	Settings findByAccountId(String accountId);
+	Settings findOneByAccountId(String accountId);
 	
 }
