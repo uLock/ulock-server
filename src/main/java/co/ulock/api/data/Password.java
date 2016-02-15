@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Site extends BaseEntity {
+public class Password extends BaseEntity {
 
 	@Embedded
 	private EncryptData data;

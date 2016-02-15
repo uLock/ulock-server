@@ -7,9 +7,8 @@ import javax.persistence.Lob;
 import javax.persistence.Table;
 
 @Entity
-//FIXME 
-//@Table(indexes = { @Index(columnList = "accountId", unique = true) })
-public class Settings extends BaseEntity {
+@Table(indexes = @Index(columnList = "accountId", unique = true) )
+public class User extends BaseEntity {
 
 	private String accountId;
 

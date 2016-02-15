@@ -3,11 +3,11 @@ package co.ulock.api.dao;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
 
-import co.ulock.api.data.Settings;
+import co.ulock.api.data.User;
 
 @Transactional
-public interface SettingsRepository extends JpaRepository<Settings, String> {
+public interface UserRepository extends JpaRepository<User, String> {
 
-	Settings findOneByAccountId(String accountId);
+	User findOneByAccountId(String accountId);
 	
 }
