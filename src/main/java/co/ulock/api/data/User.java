@@ -7,7 +7,7 @@ import javax.persistence.Lob;
 import javax.persistence.Table;
 
 @Entity
-@Table(indexes = @Index(columnList = "accountId", unique = true) )
+@Table(name = "Users", indexes = @Index(columnList = "accountId", unique = true) )
 public class User extends BaseEntity {
 
 	private String accountId;
