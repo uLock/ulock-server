@@ -6,9 +6,13 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 @MappedSuperclass
 public class BaseEntity {
@@ -20,7 +24,11 @@ public class BaseEntity {
 	private String id;
 
 	@Version
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date lastModified;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date createdDate = new Date();
 
 	public String getId() {
 		return id;
@@ -36,6 +44,14 @@ public class BaseEntity {
 
 	public void setLastModified(Date lastModified) {
 		this.lastModified = lastModified;
+	}
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
 	}
 
 }
