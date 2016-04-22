@@ -23,7 +23,7 @@ spring:
     url: jdbc:postgresql://ulock-postgres.weave.local/ulock
     username: postgres
     password: ${DB_PASSWORD}
-    jpa:
-      hibernate:
-        ddl-auto: update
+  jpa:
+    hibernate:
+      ddl-auto: update
         
