@@ -1,0 +1,10 @@
+<configuration status="OFF" packages="org.graylog2.log4j2">
+    <appenders>
+        <GELF name="gelfAppender" server="graylog.weave.local" port="12201"/>
+    </appenders>
+    <loggers>
+        <root level="info">
+            <appender-ref ref="gelfAppender"/>
+        </root>
+    </loggers>
+</configuration>
