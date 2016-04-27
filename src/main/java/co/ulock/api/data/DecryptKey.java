@@ -3,13 +3,10 @@ package co.ulock.api.data;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.Index;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(indexes = @Index(columnList = "accountId", unique = true) )
 public class DecryptKey extends BaseEntity {
 
 	private String key;
