@@ -21,7 +21,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
-		<keycloak.version>1.7.0.Final</keycloak.version>
+		<keycloak.version>1.9.4.Final</keycloak.version>
 		<docker.image.prefix>ulock</docker.image.prefix>
 	</properties>
 
