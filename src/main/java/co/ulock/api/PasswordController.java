@@ -57,4 +57,16 @@ public class PasswordController {
 		}
 	}
 
+	@Transactional
+	@RequestMapping(path = "/passwords/{passwordId}", method = RequestMethod.DELETE)
+	public ResponseEntity<?> delete(@PathVariable String passwordId, Principal principal) {
+		Password findOne = dao.findOne(passwordId);
+		if (findOne != null && findOne.getAccountId().equals(principal.getName())) {
+			dao.delete(findOne);
+			return ResponseEntity.noContent().build();
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+
 }
