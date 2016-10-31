@@ -1,10 +1,12 @@
-<configuration status="OFF" packages="org.graylog2.log4j2">
+<configuration status="INFO">
     <appenders>
-        <GELF name="gelfAppender" server="graylog.weave.local" port="12201"/>
+      <Console name="Console" target="SYSTEM_OUT">
+			     <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+		  </Console>
     </appenders>
     <loggers>
-        <root level="info">
-            <appender-ref ref="gelfAppender"/>
+        <root level="INFO">
+            <appender-ref ref="Console"/>
         </root>
     </loggers>
 </configuration>
