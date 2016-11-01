@@ -2,6 +2,8 @@ package co.ulock.api;
 
 import java.security.Principal;
 
+import org.keycloak.KeycloakPrincipal;
+import org.keycloak.KeycloakSecurityContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,17 +22,33 @@ public class UserController {
 	@Autowired
 	private UserRepository dao;
 
+	@Transactional
 	@RequestMapping(path = "/user", method = RequestMethod.GET)
 	public User getUserSettings(Principal principal) {
-		return dao.findOneByAccountId(principal.getName());
+		User user = dao.findOneByAccountId(principal.getName());
+		String email = getEmail(principal);
+		
+		//lazy update
+		if(!email.equals(user.getEmail())) {
+			user.setEmail(email);
+		}
+		
+		return user;
 	}
 
 	@Transactional
 	@RequestMapping(path = "/user", method = RequestMethod.POST)
 	public User create(@RequestBody User settings, Principal principal) {
-		settings.setAccountId(principal.getName());	
+		String email = getEmail(principal);
+		settings.setEmail(email);
+		settings.setAccountId(principal.getName());
 		return dao.save(settings);
 	}
 
+	private String getEmail(Principal principal) {
+		KeycloakPrincipal<KeycloakSecurityContext> keycloakPrincipal = (KeycloakPrincipal<KeycloakSecurityContext>) principal;
+		String email = keycloakPrincipal.getKeycloakSecurityContext().getToken().getEmail();
+		return email;
+	}
 
 }

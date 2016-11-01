@@ -6,11 +6,16 @@ import javax.persistence.Index;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.Email;
+
 @Entity
 @Table(name = "Users", indexes = @Index(columnList = "accountId", unique = true) )
 public class User extends BaseEntity {
 
 	private String accountId;
+	
+	@Email
+	private String email;
 
 	@Embedded
 	private EncryptData data;
@@ -40,6 +45,14 @@ public class User extends BaseEntity {
 
 	public void setPublicKey(String publicKey) {
 		this.publicKey = publicKey;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }
