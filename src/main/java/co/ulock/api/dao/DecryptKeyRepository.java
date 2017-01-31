@@ -7,6 +7,7 @@ import static org.torpedoquery.jpa.Torpedo.where;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import javax.persistence.EntityManager;
@@ -24,11 +25,11 @@ public class DecryptKeyRepository {
 	@Autowired
 	private EntityManager manager;
 
-	public DecryptKey findActiveKey(String accountId, String deviceId) {
+	public List<DecryptKey> findActivesKey(String accountId, String deviceId) {
 		DecryptKey from = from(DecryptKey.class);
 		where(from.getAccountId()).eq(accountId).and(from.getDeviceId()).eq(deviceId).and(from.getExpireAt())
 				.gt(new Date());
-		return select(from).get(manager);
+		return select(from).list(manager);
 	}
 	
 

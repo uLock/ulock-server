@@ -1,6 +1,7 @@
 package co.ulock.api;
 
 import java.security.Principal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,9 +23,9 @@ public class DecryptKeyController {
 
 	@RequestMapping(path = "/decrypt/{deviceId}", method = RequestMethod.GET)
 	public ResponseEntity<?> getDecryptKey(Principal principal, @PathVariable String deviceId) {
-		DecryptKey activeKey = dao.findActiveKey(principal.getName(), deviceId);
-		if (activeKey != null) {
-			return ResponseEntity.ok(activeKey);
+		List<DecryptKey> activeKeys = dao.findActivesKey(principal.getName(), deviceId);
+		if (!activeKeys.isEmpty()) {
+			return ResponseEntity.ok(activeKeys.get(0));
 		} else {
 			return ResponseEntity.notFound().build();
 		}
