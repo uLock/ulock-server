@@ -1,10 +1,18 @@
 package co.ulock.api.data;
 
 import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.ManyToOne;
 
+@Entity
 public class Member extends BaseEntity {
 
+	@ManyToOne
 	private User user;
+	
+	@Enumerated(EnumType.STRING)
 	private Role role;
 
 	@Embedded
