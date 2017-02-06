@@ -7,8 +7,10 @@ import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="groups")
 public class Group extends BaseEntity {
 
 	private String name;

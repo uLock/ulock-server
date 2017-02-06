@@ -37,7 +37,7 @@ public class Member extends BaseEntity {
 		return data;
 	}
 
-	public void setData(EncryptData data) {
+	public void setData(EncryptData data) {	
 		this.data = data;
 	}
 
