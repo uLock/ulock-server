@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.keycloak.KeycloakPrincipal;
 import org.keycloak.KeycloakSecurityContext;
+import org.keycloak.adapters.springsecurity.token.KeycloakAuthenticationToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -57,8 +58,8 @@ public class UserController {
 	}
 
 	private String getEmail(Principal principal) {
-		KeycloakPrincipal<KeycloakSecurityContext> keycloakPrincipal = (KeycloakPrincipal<KeycloakSecurityContext>) principal;
-		String email = keycloakPrincipal.getKeycloakSecurityContext().getToken().getEmail();
+		KeycloakAuthenticationToken keycloakPrincipal = (KeycloakAuthenticationToken) principal;
+		String email = keycloakPrincipal.getAccount().getKeycloakSecurityContext().getToken().getEmail();
 		return email;
 	}
 
