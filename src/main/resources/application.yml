@@ -2,7 +2,7 @@ spring:
   datasource:
     driverClassName: org.h2.Driver
     url: jdbc:h2:mem:test;MODE=PostgreSQL
-        
+
 ---
 
 spring:
@@ -13,14 +13,14 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-        
+
 ---
-        
+
 spring:
   profiles: production
   datasource:
     driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://ulock-postgres.weave.local/ulock
+    url: jdbc:postgresql://ulock-postgres/ulock
     username: postgres
     password: ${DB_PASSWORD}
   jpa:
@@ -29,4 +29,3 @@ spring:
     properties:
       hibernate:
         physical_naming_strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-        
